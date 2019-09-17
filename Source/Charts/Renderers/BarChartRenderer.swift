@@ -873,7 +873,10 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
             // does not appear to short circuit which causes an index out of range
             // exception in the else portion
             //let yValue = vals.isEmpty ? 0.0 : vals[idx % vals.count]
-            let yValue = if vals.isEmpty { 0.0 } else { vals[idx % vals.count] }
+            var yValue = 0.0
+            if !vals.isEmpty {                 
+                vals[idx % vals.count]
+            }
 
             elementValueText = dataSet.valueFormatter?.stringForValue(
                 yValue,
