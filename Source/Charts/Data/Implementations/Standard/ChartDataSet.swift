@@ -527,7 +527,9 @@ extension ChartDataSet: RandomAccessCollection {
 }
 
 // MARK: RangeReplaceableCollection
-extension ChartDataSet: RangeReplaceableCollection {
+// HACK(AP): Removing conformance to `RangeReplaceableCollection` that isn't used and
+// is preventing Xcode 14 from compiling because the conformance is incomplete.
+extension ChartDataSet { // : RangeReplaceableCollection {
     public func append(_ newElement: Element) {
         calcMinMax(entry: newElement)
         entries.append(newElement)
